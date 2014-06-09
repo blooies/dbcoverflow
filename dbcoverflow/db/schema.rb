@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20140121182931) do
     t.integer  "score",        default: 0
     t.integer  "votable_id"
     t.string   "votable_type"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
