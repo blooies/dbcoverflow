@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
 
-
   def new
     @commentable = find_commentable
 
@@ -13,16 +12,12 @@ class CommentsController < ApplicationController
     end
   end
 
-
-
   def create
     @user = User.find(session[:user_id])
     @commentable = find_commentable
     @comment = Comment.create(user: @user, body: params[:comment][:body] )
-    # @comment = Comment.create(comment_params)
     @commentable.comments << @comment
     redirect_to :back
-
   end
 
 
@@ -32,7 +27,6 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body, :user_id)
   end
 
-
   def find_commentable
     if params[:question_id]
       Question.find(params[:question_id])
@@ -40,6 +34,5 @@ class CommentsController < ApplicationController
       Answer.find(params[:answer_id])
     end
   end
-
 
 end

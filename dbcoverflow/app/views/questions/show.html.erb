@@ -13,7 +13,6 @@
   <br><%= link_to "add comment", new_question_comment_path(@question), :remote => true %>
 <% end %>
 
-
 <% if @question.user_id == session[:user_id] %>
 <br>
   <%= link_to("edit", edit_question_path) %>
@@ -79,7 +78,7 @@
 <% if session[:user_id] != nil %>
   <%= form_for [@question, @answer] do |f| %>
     <%= f.label :answer %>
-    <%= f.text_field :body %>
+    <%= f.text_area :body, cols: 105, rows: 5 %>
     <%= f.submit "submit answer"%>
   <% end %>
 <% else %>
