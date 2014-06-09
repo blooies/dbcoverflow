@@ -1,32 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+b = User.create({username: "Bev", email: "bev@email.com", password: "password", password_confirmation: "password"})
+s = User.create({username: "Siyan", email: "siyan@email.com", password: "password", password_confirmation: "password"})
+c = User.create({username: "Xine", email: "xine@email.com", password: "password", password_confirmation: "password"})
+a = User.create({username: "Alex", email: "alex@email.com", password: "password", password_confirmation: "password"})
 
+x = Question.create({body: "What is Insung's fave pack of smokes?", user: s})
+y = Question.create({body: "Why does Insung wear socks with Toms?", user: b})
+z = Question.create({body: "Why is Insung so mean to everyone all the time?", user: a})
 
-require 'faker'
+x.vote = Vote.create(score: 1)
+y.vote = Vote.create(score: 4)
+z.vote = Vote.create(score: 3)
 
-10.times { @user = User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password: '123456')}
+q = Answer.create(question: x, user: s, body: "Marlboro")
+w = Answer.create(question: x, user: c, body: "American Spirit")
+e = Answer.create(question: y, user: c, body: "He has no shame")
+r = Answer.create(question: z, user: b, body: "He bullies me all the time. He has no heart.")
 
-@users = User.all
+q.vote = Vote.create(score: 3)
+w.vote = Vote.create(score: 2)
+e.vote = Vote.create(score: 9)
+r.vote = Vote.create(score: 7)
 
-@users.each do |user|
-	4.times do 
-		@question = Question.create(user_id: user.id, body: Faker::Lorem.sentence)
-		2.times { @question.answers << Answer.create(user_id: (1..10).to_a.sample, body: Faker::Lorem.sentence)}
-	end
-end
-
-@questions = Question.all
-@answers = Answer.all
-
-@questions.each do |question|
-	(2).times { Comment.create(user_id: (1..10).to_a.sample, commentable_type: 'Question', commentable_id: (1..@questions.count).to_a.sample, body: Faker::Lorem.sentence) }
-end
-
-@answers.each do |answer|
-	(2).times { Comment.create(user_id: (1..10).to_a.sample, commentable_type: 'Answer', commentable_id: (1..@answers.count).to_a.sample, body: Faker::Lorem.sentence) }
-end
