@@ -1,6 +1,9 @@
 # DBC OVERFLOW
 A functional clone of Stack Overflow.
 
+## MVP
+A user can signup/login. A user can post questions, comment on questions, comment on answers, and upvote/downvote answers.
+
 ## QUICK START
 Run `$ bundle install`
 
@@ -61,7 +64,3 @@ Please thank our well-respected developers:
 - Christine Feaster
 - Siyan Beverly
 - Alexander Frankel
-- Neal Fennimore
-- Reid Covington
-- Insung Lee
-- Justin Phelps
